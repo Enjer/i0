@@ -1,40 +1,374 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>恭喜，站点创建成功！</title>
-    <style>
-        .container {
-            width: 60%;
-            margin: 10% auto 0;
-            background-color: #f0f0f0;
-            padding: 2% 5%;
-            border-radius: 10px
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuroscientist: The Real Reason Why You Feel Foggy and How To Clear It</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #222222;
+      line-height: 1.5;
+    }
 
-            ul li {
-                line-height: 2.3
-            }
+    /* ── MAIN WRAPPER ── */
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 0;
+      text-align: center;
+    }
 
-        a {
-            color: #20a53a
-        }
-    </style>
+    /* ── HEADLINE ── */
+    .headline {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #111111;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .headline .highlight {
+      color: #cc0000;
+    }
+
+    /* ── VIDEO BLOCK ── */
+    .video-container {
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto 10px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      border: none;
+      display: block;
+      background: #1a1a1a;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16 / 9;
+    }
+
+    /* split brain image effect using CSS gradient + pseudo-elements */
+    .video-thumbnail::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right,
+          rgba(180, 120, 80, 0.85) 0%,
+          rgba(100, 60, 40, 0.6) 50%,
+          rgba(20, 40, 80, 0.85) 50%,
+          rgba(10, 20, 60, 0.9) 100%
+        );
+      z-index: 1;
+    }
+
+    /* brain anatomy texture suggestion */
+    .video-thumbnail-inner {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 25% 50%, #c8865a 0%, #8b4513 40%, #3d1a0a 100%),
+        radial-gradient(ellipse 60% 80% at 75% 50%, #1a3a6b 0%, #0d2040 50%, #050d1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* glowing blue accent on the right side (activated brain) */
+    .video-thumbnail-inner::after {
+      content: '';
+      position: absolute;
+      right: 18%;
+      top: 30%;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100, 180, 255, 0.9) 0%, rgba(50, 120, 220, 0.5) 50%, transparent 80%);
+      box-shadow: 0 0 30px 15px rgba(80, 160, 255, 0.4);
+      z-index: 3;
+    }
+
+    /* play button */
+    .play-btn {
+      position: relative;
+      z-index: 10;
+      width: 72px;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .video-container:hover .play-btn {
+      transform: scale(1.06);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.6);
+    }
+
+    .play-btn::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 14px 0 14px 26px;
+      border-color: transparent transparent transparent #333333;
+      margin-left: 5px;
+    }
+
+    /* cursor hand icon overlay */
+    .cursor-hand {
+      position: absolute;
+      bottom: 18%;
+      left: 50%;
+      transform: translateX(10px);
+      z-index: 11;
+      font-size: 2rem;
+      pointer-events: none;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    }
+
+    .video-load-note {
+      font-size: 0.85rem;
+      color: #555555;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-btn {
+      display: inline-block;
+      background: #1a7abf;
+      color: #ffffff;
+      font-size: 1.35rem;
+      font-weight: 700;
+      padding: 16px 48px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      margin-bottom: 36px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 12px rgba(26, 122, 191, 0.35);
+    }
+
+    .cta-btn:hover {
+      background: #155f9a;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(26, 122, 191, 0.45);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ── BODY COPY ── */
+    .body-copy {
+      text-align: left;
+      max-width: 780px;
+      margin: 0 auto;
+      padding-bottom: 48px;
+    }
+
+    .body-copy p {
+      font-size: 1rem;
+      color: #333333;
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+
+    .body-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .body-copy strong {
+      font-weight: 700;
+      color: #111111;
+    }
+
+    .body-copy .inline-link {
+      color: #1a7abf;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .body-copy .inline-link:hover {
+      color: #155f9a;
+    }
+
+    /* highlight span used for "quietly hijacks focus and memory" */
+    .underline-bold {
+      font-weight: 700;
+      text-decoration: underline;
+      color: #111111;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #e8e8e8;
+      padding: 32px 20px 8px 20px;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .footer-inner p {
+      font-size: 0.72rem;
+      color: #555555;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .footer-inner p:last-of-type {
+      margin-bottom: 8px;
+    }
+
+    .footer-copyright {
+      font-size: 0.75rem;
+      color: #444444;
+      margin-bottom: 8px !important;
+    }
+
+    .footer-links {
+      font-size: 0.75rem;
+      color: #333333;
+    }
+
+    .footer-links a {
+      color: #1a7abf;
+      text-decoration: underline;
+      margin: 0 4px;
+    }
+
+    .footer-links a:hover {
+      color: #155f9a;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .headline {
+        font-size: 1.45rem;
+      }
+
+      .cta-btn {
+        font-size: 1.1rem;
+        padding: 14px 28px;
+      }
+
+      .play-btn {
+        width: 58px;
+        height: 58px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>恭喜, 站点创建成功！</h1>
-        <h3>这是默认index.html，本页面由系统自动生成</h3>
-        <ul>
-            <li>本页面在FTP根目录下的index.html</li>
-            <li>您可以修改、删除或覆盖本页面</li>
-            <li>FTP相关信息，请到“面板系统后台 > FTP” 查看</li>
-            <li>更多功能了解，请查看i0.img8.top</li>
-        </ul>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-wrap">
+
+    <!-- Headline -->
+    <h1 class="headline">
+      Neuroscientist: <span class="highlight">The Real Reason</span> Why You<br>
+      Feel Foggy and How To Clear It
+    </h1>
+
+    <!-- Video -->
+    <div class="video-container" onclick="this.querySelector('.play-btn').style.transform='scale(0.96)'">
+      <div class="video-thumbnail">
+        <div class="video-thumbnail-inner">
+          <div class="play-btn"></div>
+        </div>
+        <span class="cursor-hand">☞</span>
+      </div>
     </div>
+
+    <p class="video-load-note">(Please allow up to 10 seconds for the video to load)</p>
+
+    <!-- CTA Button -->
+    <a href="#" class="cta-btn">Watch The Free Video</a>
+
+    <!-- Body Copy -->
+    <div class="body-copy">
+      <p>
+        If you used to be the sharpest person in the room and now you're losing your train of thought
+        mid-meeting, a neuroscientist says <strong>it's not burnout</strong>.
+      </p>
+      <p>
+        It's not anxiety, it's not laziness, and it's not something wrong with you — it could be a specific
+        brain pattern that <span class="underline-bold">quietly hijacks focus and memory</span> until you correct it.
+      </p>
+      <p>
+        A neuroscientist identified <strong>the real reason</strong> millions of people feel like they're thinking through
+        mud — stuck, slow, and never quite "all the way there", and discovered a <strong>7-second brain
+        technique</strong> to activate it.
+      </p>
+      <p>
+        <strong>Over 18,366 people</strong> have used this discovery to get their edge back — sharper recall, faster
+        thinking, and the confidence they thought they'd lost for good.
+      </p>
+      <p>
+        <a style="font-weight: bold;" href="#" class="inline-link">&gt;&gt; Try the simple brain technique now and see how it works</a>
+      </p>
+    </div>
+
+  </div><!-- /.page-wrap -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p>
+        This site is not a part of Google™ website or network of sites such as Youtube™ or any company owned by Google™ or Youtube™. Additionally this website is not
+        endorsed by Google™ Inc. in any way. Google™ is a trademark of their respective companies.
+      </p>
+      <p>
+        DISCLAIMER: the content on this site is for information purposes only and do not constitute financial, legal, or professional advice. This website is an independent,
+        advertising-supported comparison service. The owners of this site may be compensated by the brands featured herein, which may impact the placement and order in
+        which these brands appear. However, this compensation does not influence our editorial integrity or objective evaluations.
+      </p>
+      <p>
+        The website's content and the product for sale is based upon the author's opinion and is provided solely on an "AS IS" and "AS AVAILABLE" basis. You should do your
+        own research and confirm the information with other sources when searching for information regarding health issues and always review the information carefully with
+        your professional health care provider before using any of the protocols presented on this website and/or in the product.
+      </p>
+      <p>
+        Statements on this website have not been evaluated by the Food and Drug Administration. The information we provide are not intended to diagnose, treat, cure or
+        prevent any disease. If you are pregnant, nursing, taking medication, or have a medical condition, please consult your physician.
+      </p>
+      <p>
+        Results May Vary: the result testimonials are in no way a guarantee of results. Individual results, including amount and time, will vary. No individual result should be
+        seen as typical.
+      </p>
+      <p class="footer-copyright">©2026 Stretching Daily All Rights Reserved.</p>
+      <p class="footer-links">
+        <a href="#">Privacy</a> |
+        <a href="#">Terms</a> |
+        <a href="#">Disclaimer</a> |
+        <a href="#">Disclosure</a> |
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </footer>
+
 </body>
 </html>
